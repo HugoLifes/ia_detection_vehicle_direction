@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 def deepSortMethod(results, detections, tracker, frame,CONFIDENCE_THRESHOLD, vehicle_clases, trajectories, angle_threshold,min_trajectory_length,counted_objects,counts):
+        
         for result in results:
             for box in result.boxes:
                 conf = float(box.conf[0])
