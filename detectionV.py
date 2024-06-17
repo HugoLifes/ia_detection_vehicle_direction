@@ -77,6 +77,8 @@ def vehicle_detection_directions():
         "Oeste": 0
     }
     
+    prev_x, prev_y = None, None
+    
     # Dictionaries to track the previous positions of each vehicle
     previous_positions = defaultdict(lambda: None)
     
@@ -120,9 +122,9 @@ def vehicle_detection_directions():
         for i, (direction, count) in enumerate(direction_counts.items()):
             cv2.putText(frame, f"{direction}: {count}", (10, 30 + i * 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
 
-        frame = counter.start_counting(frame, results)  # Show counter and line for reference
+        #frame = counter.start_counting(frame, results)  # Show counter and line for reference
         video_writer.write(frame)
-
+        cv2.imshow("YOLOv8 Direction Detection", frame)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
